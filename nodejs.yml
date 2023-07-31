@@ -53,6 +53,6 @@
 - name: Start {{component}} service
   ansible.builtin.service:
      name: "{{ component }}"
-     state: started
+     state: restarted
      enabled: yes
      daemon_reload: yes
