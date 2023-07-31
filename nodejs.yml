@@ -47,7 +47,7 @@
     state: latest
 
 - name: load schema
-  ansible.builtin.shell: --host mongodb-dev.cloudev7.online </app/schema/{{component}}.js
+  ansible.builtin.shell: mongo --host mongodb-dev.cloudev7.online </app/schema/{{component}}.js
                            
 
 - name: Start {{component}} service
