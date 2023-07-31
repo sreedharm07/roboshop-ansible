@@ -1,0 +1,63 @@
+- name: Copy repo files
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
+
+- name: Copy service files
+  ansible.builtin.copy:
+    src: "{{component}}.service"
+    dest: /etc/systemd/system/{{component}}.service
+
+- name: setting up nodejs
+  ansible.builtin.shell: https://rpm.nodesource.com/setup_lts.x | bash
+
+- name: install nodejs
+  ansible.builtin.yum:
+    name: nodejs
+    state: latest
+
+- name: Add the application user
+  ansible.builtin.user:
+    name: roboshop
+
+- name: Remove old content
+  ansible.builtin.file:
+    path: /app
+    state: absent
+
+- name: create app directory
+  ansible.builtin.file:
+    path: /app
+    state: directory
+
+- name: Unarchive a file and download
+  ansible.builtin.unarchive:
+     src:  https://roboshop-artifacts.s3.amazonaws.com/{{component}}.zip
+     dest: /app
+     remote_src: yes
+
+- name: download app dependencies
+  ansible.builtin.shell: npm install
+  args:
+    chdir: /app
+
+- name: install mongodb
+  ansible.builtin.yum:
+    name: mongodb-org-shell
+    state: latest
+
+- name: load schema
+  ansible.builtin.shell: --host mongodb-dev.cloudev7.online </app/schema/{{component}}.js
+                           
+      - name: Start nginx
+        ansible.builtin.service:
+          name: nginx
+          state: started
+          enabled: yes
+
+- name: Start {{component}} service
+  ansible.builtin.service:
+            name: " {{ component }}"
+            state: started
+            enabled: yes
+            daemon_reload: yes
