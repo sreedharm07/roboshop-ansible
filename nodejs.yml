@@ -49,11 +49,6 @@
 - name: load schema
   ansible.builtin.shell: --host mongodb-dev.cloudev7.online </app/schema/{{component}}.js
                            
-      - name: Start nginx
-        ansible.builtin.service:
-          name: nginx
-          state: started
-          enabled: yes
 
 - name: Start {{component}} service
   ansible.builtin.service:
