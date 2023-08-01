@@ -24,7 +24,8 @@
 
     - name: downloading dependencies
       ansible.builtin.shell: go mod init dispatch ; go get ; go build
-      chdir: /app
+      args:
+        chdir: /app
 
     - name: copying service file
       ansible.builtin.copy:
