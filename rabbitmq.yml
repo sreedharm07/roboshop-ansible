@@ -15,10 +15,10 @@
 
     - name: Start rabbitmq service
       ansible.builtin.service:
-        name: rabbitmq
-        state: restarted
+        name: rabbitmq-server
+        state: restarted-server
         enabled: yes
-        daemon_reload: yes
+
 
     - rabbitmq_user:
         user: roboshop
