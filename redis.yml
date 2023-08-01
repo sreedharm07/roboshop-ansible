@@ -36,4 +36,4 @@
     - name: Enable redis
       ansible.builtin.service:
         name: redis
-        enabled: yes
+        enabled:  yes
