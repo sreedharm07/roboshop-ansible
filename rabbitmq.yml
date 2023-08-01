@@ -13,9 +13,9 @@
           name: rabbitmq-server
           state: latest
 
-    - name: Start shipping service
+    - name: Start rabbitmq service
       ansible.builtin.service:
-        name: shipping
+        name: rabbitmq
         state: restarted
         enabled: yes
         daemon_reload: yes
