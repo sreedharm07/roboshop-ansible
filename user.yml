@@ -1,8 +1,8 @@
-- name: installing catalogue
+- name: installing user
   hosts: all
   become: true
   vars:
-    component: catalogue
+    component: user
     schema: true
   tasks:
     - name: importing tasks

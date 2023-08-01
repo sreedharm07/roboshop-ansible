@@ -1,0 +1,30 @@
+- name: installing rabbitmq
+  hosts: all
+  become: true
+  tasks:
+    - name: downloading erlang repos
+      ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
+
+    - name: downloading rabbitmq repos
+      ansible.builtin.shell:  curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
+
+    - name: install rabbitmq server
+      ansible.builtin.yum:
+          name: rabbitmq-server
+          state: latest
+
+    - name: Start shipping service
+      ansible.builtin.service:
+        name: shipping
+        state: restarted
+        enabled: yes
+        daemon_reload: yes
+
+    - rabbitmq_user:
+        user: roboshop
+        password: roboshop@123
+        vhost: /
+        configure_priv: .*
+        read_priv: .*
+        write_priv: .*
+        state: present

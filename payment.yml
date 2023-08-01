@@ -1,0 +1,7 @@
+- name: installing python module
+  hosts: all
+  become: true
+  tasks:
+    - name: importing tasks from python file
+      ansible.builtin.import_tasks:
+        file: python.yml

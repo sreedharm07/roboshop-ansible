@@ -41,14 +41,16 @@
   args:
     chdir: /app
 
+
 - name: install mongodb
   ansible.builtin.yum:
     name: mongodb-org-shell
     state: latest
+    when: schema is defined
 
 - name: load schema
   ansible.builtin.shell: mongo --host mongodb-dev.cloudev7.online </app/schema/{{component}}.js
-                           
+  when: schema is defined
 
 - name: Start {{component}} service
   ansible.builtin.service:
