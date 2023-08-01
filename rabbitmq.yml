@@ -14,7 +14,7 @@
           state: latest
 
     - name: Start rabbitmq service
-      ansible.builtin.service:
+      ansible.builtin.systemd:
         name: rabbitmq-server
         state: restarted-server
         enabled: yes
