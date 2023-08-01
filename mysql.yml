@@ -13,8 +13,7 @@
     - name: Start and enable mysql service
       ansible.builtin.service:
         name: mysqld
-        state: started
-        enabled: yes
+        state: restarted
 
 
     - name: setting password to mysql
