@@ -1,6 +1,6 @@
 - name: redis installation
   hosts: all
-  become: true
+  become: yes
   tasks:
     - name: installing redis repos
       ansible.builtin.yum:
