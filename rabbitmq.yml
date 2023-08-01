@@ -20,8 +20,8 @@
         enabled: yes
 
 
-    - rabbitmq_user:
-        community.rabbitmq.rabbitmq_user:
+    - name: rabbitmq_user
+      community.rabbitmq.rabbitmq_user:
           user: roboshop
           password: roboshop123
           vhost: /
