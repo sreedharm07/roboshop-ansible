@@ -22,7 +22,7 @@
 
     - rabbitmq_user:
         user: roboshop
-        password: roboshop@123
+        password: roboshop123
         vhost: /
         configure_priv: .*
         read_priv: .*
