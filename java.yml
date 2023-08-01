@@ -38,8 +38,8 @@
 - name: install mysql
   ansible.builtin.yum:
         name: mysql
-        state: installed
-        when: schema is defined
+        state: latest
+  when: schema is defined
 
 - name: load schema
   ansible.builtin.shell: mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pRoboShop@1 < /app/schema/shipping.sql
