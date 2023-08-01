@@ -11,9 +11,10 @@
         dest: /etc/yum.repos.d/mysql.repo
 
     - name: Start and enable mysql service
-      ansible.builtin.service:
+      ansible.builtin.systemd:
         name: mysqld
         state: restarted
+        enabled: yes
 
 
     - name: setting password to mysql
