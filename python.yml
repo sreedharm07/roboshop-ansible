@@ -26,9 +26,9 @@
   args:
     chdir: /app
 
-- name: Start shipping service
+- name: Start payment service
   ansible.builtin.service:
-    name: shipping
+    name: payment
     state: restarted
     enabled: yes
     daemon_reload: yes
