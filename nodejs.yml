@@ -46,7 +46,7 @@
   ansible.builtin.yum:
     name: mongodb-org-shell
     state: latest
-    when: schema is defined
+    when: {{schema}} == "mongo"
 
 - name: load schema
   ansible.builtin.shell: mongo --host mongodb-dev.cloudev7.online </app/schema/{{component}}.js

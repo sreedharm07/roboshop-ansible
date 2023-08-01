@@ -3,7 +3,7 @@
   become: true
   vars:
     - component: catalogue
-    - schema: true
+    - schema: mongo
   tasks:
     - name: importing tasks
       ansible.builtin.import_tasks: nodejs.yml
