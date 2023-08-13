@@ -28,8 +28,8 @@
 
 - name: copying service file
   ansible.builtin.copy:
-    src: payment.service
-    dest: /etc/systemd/system/payment.service
+    src: shipping.service
+    dest: /etc/systemd/system/shipping.service
 
 - name: Start payment service
   ansible.builtin.service:
