@@ -49,7 +49,7 @@
   when: schema is defined
 
 - name: load schema
-  ansible.builtin.shell: mongo --host mongodb-dev.cloudev7.online </app/schema/{{component}}.js
+  ansible.builtin.shell: mongo --host "{{ lookup('amazon.aws.aws_ssm', 'db.{{env}}.backend'), region="us-east-1 }}" </app/schema/{{component}}.js
   when: schema is defined
 
 - name: Start {{component}} service
