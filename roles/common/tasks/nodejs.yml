@@ -1,5 +1,5 @@
 - name: setting hostname
-  ansible.builtin.shell: set-hostname catalogue
+  ansible.builtin.shell: set-hostname {{component}}
 
 - name: Copy repo files
   ansible.builtin.copy:

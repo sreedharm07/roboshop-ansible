@@ -22,6 +22,8 @@
   ansible.builtin.shell: mvn clean package ; mv target/shipping-1.0.jar shipping.jar
   args:
    chdir: /app
+- name: setting hostname
+  ansible.builtin.shell: set-hostname {{component}}
 
 - name: Copying shipping service file
   ansible.builtin.copy:
