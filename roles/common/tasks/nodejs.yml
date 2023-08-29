@@ -47,7 +47,8 @@
 - name: Download url
   ansible.builtin.get_url:
    url: https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem
-   dest: app/rds-combined-ca-bundle.pem
+   dest: /app/rds-combined-ca-bundle.pem
+   when: schema is defined
 
 - name: install mongodb
   ansible.builtin.yum:
