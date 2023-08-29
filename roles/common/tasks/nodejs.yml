@@ -44,6 +44,10 @@
   args:
     chdir: /app
 
+- name: Download url
+  ansible.builtin.get_url:
+   url: https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem
+   dest: app/rds-combined-ca-bundle.pem
 
 - name: install mongodb
   ansible.builtin.yum:
@@ -52,7 +56,7 @@
   when: schema is defined
 
 - name: load schema
-  ansible.builtin.shell: mongo --ssl --host {{ lookup('amazon.aws.aws_ssm', 'docdb.{{env}}.backend', region='us-east-1') }}:27017 --sslCAFile global-bundle.pem --username roboshopdocdb --password roboshop123 </app/schema/{{component}}.js
+  ansible.builtin.shell: mongo --ssl --host {{ lookup('amazon.aws.aws_ssm', 'docdb.{{env}}.backend', region='us-east-1') }}:27017 --sslCAFile app/rds-combined-ca-bundle.pem --username roboshopdocdb --password roboshop123 </app/schema/{{component}}.js
   when: schema is defined
 
 - name: Start {{component}} service
