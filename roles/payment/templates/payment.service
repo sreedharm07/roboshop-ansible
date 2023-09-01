@@ -6,11 +6,11 @@ User=root
 WorkingDirectory=/app
 Environment=CART_HOST={{lookup('amazon.aws.aws_ssm','payment.{{env}}.carthost',region= 'us-east-1')}}
 Environment=CART_PORT={{lookup('amazon.aws.aws_ssm','payment.{{env}}.cartport',region='us-east-1')}}
-Environment=USER_HOST={{lookup('amazon.aws.aws_ssm',payment.{{env}}.userhost',region='us-east-1' )}}
-Environment=USER_PORT={{lookup('amazon.aws.aws_ssm',payment.{{env}}.userport',region='us-east-1' )}}
-Environment=AMQP_HOST={{lookup('amazon.aws.aws_ssm',payment.{{env}}.amqphost',region='us-east-1' )}}
-Environment=AMQP_USER={{lookup('amazon.aws.aws_ssm',payment.{{env}}.amqpuser',region='us-east-1' )}}
-Environment=AMQP_PASS={{lookup('amazon.aws.aws_ssm',payment.{{env}}.amqppass',region='us-east-1' )}}
+Environment=USER_HOST={{lookup('amazon.aws.aws_ssm','payment.{{env}}.userhost',region='us-east-1' )}}
+Environment=USER_PORT={{lookup('amazon.aws.aws_ssm','payment.{{env}}.userport',region='us-east-1' )}}
+Environment=AMQP_HOST={{lookup('amazon.aws.aws_ssm','payment.{{env}}.amqphost',region='us-east-1' )}}
+Environment=AMQP_USER={{lookup('amazon.aws.aws_ssm','payment.{{env}}.amqpuser',region='us-east-1' )}}
+Environment=AMQP_PASS={{lookup('amazon.aws.aws_ssm','payment.{{env}}.amqppass',region='us-east-1' )}}
 
 ExecStart=/usr/local/bin/uwsgi --ini payment.ini
 ExecStop=/bin/kill -9 $MAINPID
