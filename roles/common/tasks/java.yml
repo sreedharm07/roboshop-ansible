@@ -26,7 +26,7 @@
   ansible.builtin.shell: set-hostname {{component}}
 
 - name: Copying shipping service file
-  ansible.builtin.copy:
+  ansible.builtin.template:
         src: shipping.service
         dest: /etc/systemd/system/shipping.service
 

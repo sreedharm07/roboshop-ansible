@@ -31,7 +31,7 @@
        chdir: /app
 
     - name: copying service file
-      ansible.builtin.copy:
+      ansible.builtin.template:
        src: shipping.service
        dest: /etc/systemd/system/shipping.service
 
