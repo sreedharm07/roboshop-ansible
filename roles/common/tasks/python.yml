@@ -28,7 +28,7 @@
 
 - name: copying service file
   ansible.builtin.template:
-    src: shipping.service
+    src: payment.service
     dest: /etc/systemd/system/payment.service
 
 - name: Start payment service
