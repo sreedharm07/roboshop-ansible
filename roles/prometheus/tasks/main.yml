@@ -7,3 +7,8 @@
   ansible.builtin.service:
     name: prometheus
     state: started
+
+- name: Copy aletr file
+  ansible.builtin.template:
+    src: alerts.yml
+    dest: /opt/prometheus/alerts.yml
