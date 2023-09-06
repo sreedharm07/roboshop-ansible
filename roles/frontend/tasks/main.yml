@@ -51,7 +51,7 @@
     src: nginx-exporter.service
     dest: /etc/systemd/system/nginx-exporter.service
 
-- name: Start nginx
+- name: Start nginx-exporter
   ansible.builtin.service:
     name: nginx-exporter
     state: started
