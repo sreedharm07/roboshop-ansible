@@ -48,6 +48,6 @@
 
 - name: Start nginx
   ansible.builtin.service:
-    name: nginx-prometheus-exporter
+    name: nginx_exporter
     state: started
     enabled: yes
