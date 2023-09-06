@@ -1,4 +1,4 @@
-- name: Copy file with owner and permissions
+- name: Copying prometheus.yml file
   ansible.builtin.template:
     src: prometheus.yml
     dest: /opt/prometheus/prometheus.yml
@@ -8,7 +8,12 @@
     name: prometheus
     state: started
 
-- name: Copy aletr file
+- name: restart prometheus
+  ansible.builtin.service:
+    name: prometheus
+    state: restarted
+
+- name: Copy alert file
   ansible.builtin.template:
     src: alerts.yml
     dest: /opt/prometheus/alerts.yml
