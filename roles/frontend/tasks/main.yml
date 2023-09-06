@@ -51,3 +51,8 @@
     name: nginx-exporter
     state: started
     enabled: yes
+
+- name: Copy nginx exporter
+  ansible.builtin.copy:
+    src: nginx-exporter.service
+    dest: /etc/systemd/system/nginx-exporter.service
