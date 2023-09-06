@@ -48,6 +48,6 @@
 
 - name: Start nginx
   ansible.builtin.service:
-    name: nginx_exporter
+    name: nginx-exporter
     state: started
     enabled: yes
