@@ -35,11 +35,15 @@
     enabled: yes
 
 
+- name: create nginx directory
+  ansible.builtin.file:
+    path: /opt/nginx-exporter
+    state: directory
 
 - name: Unarchive a file and download nginx node exporter
   ansible.builtin.unarchive:
     src: nginx-prometheus-exporter_0.11.0_linux_amd64.tar.gz
-    dest: /opt
+    dest: /opt/nginx-exporter
     remote_src: yes
 
 - name: Start nginx
