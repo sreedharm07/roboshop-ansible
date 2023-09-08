@@ -3,3 +3,16 @@
 
 - name: setup hostname
   ansible.builtin.shell: set-hostname {{component}}
+
+
+
+
+- name: Copying rsyslog config file
+  ansible.builtin.template:
+    src: rsyslog.conf
+    dest: /etc/rsyslog.d/roboshop.conf
+
+- name: reStart rsyslog service
+  ansible.builtin.service:
+    name: rsyslog
+    state: restarted
