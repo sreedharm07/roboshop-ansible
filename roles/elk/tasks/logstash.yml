@@ -1,4 +1,4 @@
-- name: Copying shipping cinf file
+- name: Copying shipping conf file
   ansible.builtin.template:
     src: logstash.conf
     dest: /etc/logstash/logstash.conf
