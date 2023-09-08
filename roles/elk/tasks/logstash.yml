@@ -1,17 +1,12 @@
-# Sample Logstash configuration for creating a simple
-# Beats -> Logstash -> Elasticsearch pipeline.
+- name: Copying shipping cinf file
+  ansible.builtin.template:
+    src: logstash.conf
+    dest: /etc/logstash/logstash.conf
 
-  input {
-  beats {
-  port => 5044
-  }
-}
 
-  output {
-  elasticsearch {
-  hosts => ["http://localhost:9200"]
-  index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
-  user => "{{lookup('amazon.aws.aws_ssm','elastic-username',region='us-east-1')}}"
-  password => "{{lookup('amazon.aws.aws_ssm','elastic-username',region='us-east-1')}}"
-  }
-}
+- name: Start logstash conf
+  ansible.builtin.service:
+    name: logstash
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
