@@ -1,7 +1,7 @@
-- name: Copying shipping conf file
+- name: Copying logstash conf file
   ansible.builtin.template:
     src: logstash.conf
-    dest: /etc/logstash/logstash.conf
+    dest: /etc/logstash/logstash.d/logstash.conf
 
 
 - name: Start logstash conf
