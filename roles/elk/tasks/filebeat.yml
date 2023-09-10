@@ -1,0 +1,12 @@
+- name: Copying  filebeat yml file
+  ansible.builtin.template:
+    src: filebeat.yml
+    dest: /etc/filebeat/filebeat.yml
+
+
+- name: Start filebeat
+  ansible.builtin.service:
+    name: filebeat
+    state: restarted
+    enabled: yes
+    daemon_reload: yes

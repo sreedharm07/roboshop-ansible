@@ -18,8 +18,13 @@
 
 - name: Copy files
   ansible.builtin.copy:
-    src: nginx.conf
+    src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
+
+- name: Copy nginx conf
+  ansible.builtin.copy:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
 
 
 - name: Unarchive a file and download
@@ -56,3 +61,8 @@
     name: nginx_exporter
     state: restarted
     enabled: yes
+
+- name: importing filebeat task
+  import_role:
+    name: elk
+    tasks_from: filebeat
