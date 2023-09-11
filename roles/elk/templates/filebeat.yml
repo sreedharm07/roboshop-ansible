@@ -52,7 +52,7 @@ filebeat.inputs:
     # to add additional information to the crawled log files for filtering
     fields:
       component: {{ component }}
-      file_type: {{ log_type }}
+      log_type: {{ log_type }}
 
 # ============================== Filebeat modules ==============================
 
