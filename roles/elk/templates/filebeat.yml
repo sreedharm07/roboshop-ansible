@@ -171,7 +171,7 @@ processors:
   # - add_docker_metadata: ~
   # - add_kubernetes_metadata: ~
   - drop_fields:
-      fields: ["agent.ephemeral_id", "agent.id", "agent.name", "agent.type",  "agent.version", "time_stamp.keyword"]
+      fields: ["agent.ephemeral_id", "agent.id", "agent.name", "agent.type",  "agent.version", "input.type"]
       ignore_missing: false
       # ================================== Logging ===================================
 
