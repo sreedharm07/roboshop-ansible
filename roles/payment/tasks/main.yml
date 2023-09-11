@@ -2,3 +2,8 @@
   import_role:
     name: common
     tasks_from: python
+
+- name: importing filebeat task
+  import_role:
+    name: elk
+    tasks_from: filebeat

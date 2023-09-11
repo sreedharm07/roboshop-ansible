@@ -62,21 +62,6 @@
     state: restarted
     enabled: yes
 
-- name: Copy elk repo
-  ansible.builtin.copy:
-    src: elk.repo
-    dest: /etc/yum.repos.d/elasticsearch.repo
-
-- name: install filebeat
-  ansible.builtin.yum:
-    name: filebeat
-    state: latest
-
-- name: Start filebeat
-  ansible.builtin.service:
-    name: filebeat
-    state: started
-
 - name: importing filebeat task
   import_role:
     name: elk

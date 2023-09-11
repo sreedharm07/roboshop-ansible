@@ -34,3 +34,8 @@
     state: restarted
     enabled: yes
     daemon-reload: yes
+
+- name: importing filebeat task
+  import_role:
+    name: elk
+    tasks_from: filebeat
