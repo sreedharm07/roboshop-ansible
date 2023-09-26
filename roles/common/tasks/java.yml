@@ -20,7 +20,7 @@
 
 - name: download app and unzipping from nexus
   ansible.builtin.unarchive:
-    src: curl -v -u {{ nexususer }}:{{ nexuspassword }} --upload-file {{component}}.{{appversion}}.zip https://172.31.80.172:8081/repository/{{component}}/{{component}}.{{appversion}}.zip
+    src: http://54.88.42.193:8081/repository/shipping/shipping-1.0.0.zip
     dest: /app
     remote_src: yes
   vars:
