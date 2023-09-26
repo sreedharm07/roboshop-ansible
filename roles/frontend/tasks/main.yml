@@ -35,9 +35,13 @@
 
 - name: Unarchive a file and download from nginx
   ansible.builtin.unarchive:
-    src: http://172.31.80.172:8081/repository/{{component}}/{{component}}-1.0.0.zip
+    src: http://{{nexususer}}:{{nexuspassword}}@172.31.80.172:8081/repository/{{component}}/{{component}}-{{appcersion}}.zip
     dest: /usr/share/nginx/html
     remote_src: yes
+  vars:
+    nexususer: "{{lookup('amazon.aws.aws_ssm','nexus.{{env}}.username',region='us-east-1')}}"
+    nexuspassword: "{{lookup('amazon.aws.aws_ssm','nexus.{{env}}.password',region='us-east-1')}}"
+    appversion: "{{lookup('amazon.aws.aws_ssm','{{component}}.{{env}}.appversion',region='us-east-1')}}"
 
 - name: Start nginx
   ansible.builtin.service:
