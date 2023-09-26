@@ -12,11 +12,22 @@
         path: /app
         state: directory
 
+#- name: download app and unzipping
+#  ansible.builtin.unarchive:
+#        src: https://roboshop-artifacts.s3.amazonaws.com/shipping.zip
+#        dest: /app
+#        remote_src: yes
+
 - name: download app and unzipping
   ansible.builtin.unarchive:
-        src: https://roboshop-artifacts.s3.amazonaws.com/shipping.zip
-        dest: /app
-        remote_src: yes
+    src: curl -v -u {{ nexususer }}:{{ nexuspassword }} --upload-file {{component}}.{{appversion}}.zip https://172.31.80.172:8081/repository/{{component}}/{{component}}.{{appversion}}.zip
+    dest: /app
+    remote_src: yes
+    vars:
+     - "nexususer" = {{lookup('amazon.aws.aws_ssm','nexus.{{env}}.username',region='us-east-1')}}
+     - "nexuspassword" = {{lookup('amazon.aws.aws_ssm','nexus.{{env}}.password',region='us-east-1')}}
+     - "appversion" = {{lookup('amazon.aws.aws_ssm','app.version',region='us-east-1')}}
+
 
 - name: download maven  dependencies
   ansible.builtin.shell: mvn clean package ; mv target/shipping-1.0.jar shipping.jar
