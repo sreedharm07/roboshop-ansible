@@ -35,7 +35,7 @@
 
 - name: Unarchive a file and download from nginx
   ansible.builtin.unarchive:
-    src: http://{{nexususer}}:{{nexuspassword}}@172.31.80.172:8081/repository/{{component}}/{{component}}-{{appcersion}}.zip
+    src: http://{{nexususer}}:{{nexuspassword}}@172.31.80.172:8081/repository/{{component}}/{{component}}-{{appversion}}.zip
     dest: /usr/share/nginx/html
     remote_src: yes
   vars:
