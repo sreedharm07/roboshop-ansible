@@ -28,10 +28,10 @@
     nexuspassword: "{{lookup('amazon.aws.aws_ssm','nexus.{{env}}.password',region='us-east-1')}}"
     appversion: "{{lookup('amazon.aws.aws_ssm','{{component}}.{{env}}.appversion',region='us-east-1')}}"
 
-- name: download maven  dependencies
-  ansible.builtin.shell: mvn clean package ; mv target/shipping-1.0.jar shipping.jar
-  args:
-   chdir: /app
+#- name: download maven  dependencies
+#  ansible.builtin.shell: mvn clean package ; mv target/shipping-1.0.jar shipping.jar
+#  args:
+#   chdir: /app
 
 - name: setting hostname
   ansible.builtin.shell: set-hostname {{component}}

@@ -49,10 +49,10 @@
     nexuspassword: "{{lookup('amazon.aws.aws_ssm','nexus.{{env}}.password',region='us-east-1')}}"
     appversion: "{{lookup('amazon.aws.aws_ssm','{{component}}.{{env}}.appversion',region='us-east-1')}}"
 
-- name: download app dependencies
-  ansible.builtin.shell: npm install
-  args:
-    chdir: /app
+#- name: download app dependencies
+#  ansible.builtin.shell: npm install
+#  args:
+#    chdir: /app
 
 - name: Download url
   ansible.builtin.get_url:
