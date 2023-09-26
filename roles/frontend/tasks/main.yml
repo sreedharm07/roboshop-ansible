@@ -36,7 +36,6 @@
 - name: Unarchive a file and download from nginx
   ansible.builtin.unarchive:
     src: http://172.31.80.172:8081/repository/{{component}}/{{component}}-1.0.0.zip
-      /frontend-1.0.0.zip
     dest: /usr/share/nginx/html
     remote_src: yes
 
