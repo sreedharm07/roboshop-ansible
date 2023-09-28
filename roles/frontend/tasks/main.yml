@@ -42,6 +42,7 @@
     nexususer: "{{lookup('amazon.aws.aws_ssm','nexus.{{env}}.username',region='us-east-1')}}"
     nexuspassword: "{{lookup('amazon.aws.aws_ssm','nexus.{{env}}.password',region='us-east-1')}}"
     appversion: "{{lookup('amazon.aws.aws_ssm','{{component}}.{{env}}.appversion',region='us-east-1')}}"
+    env: dev
 
 - name: Start nginx
   ansible.builtin.service:
