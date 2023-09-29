@@ -17,12 +17,12 @@
     state: directory
 
 - name: Copy files
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
 - name: Copy nginx conf
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: nginx.conf
     dest: /etc/nginx/nginx.conf
 
@@ -62,7 +62,7 @@
     remote_src: yes
 
 - name: Copy nginx exporter
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: nginx-exporter.service
     dest: /etc/systemd/system/nginx_exporter.service
 
