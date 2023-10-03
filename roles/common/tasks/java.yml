@@ -1,7 +1,13 @@
-- name: install maven
+#- name: install maven
+#  ansible.builtin.yum:
+#    name: maven
+#    state: latest
+
+- name: install java
   ansible.builtin.yum:
-    name: maven
+    name: java-17-openjdk
     state: latest
+
 
 - name: adding user
   ansible.builtin.user:
