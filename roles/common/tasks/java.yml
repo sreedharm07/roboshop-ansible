@@ -68,7 +68,7 @@
 
 - name: load schema
   ansible.builtin.shell: mysql -h {{lookup('amazon.aws.aws_ssm','{{component}}.{{env}}.dbhost', region = 'us-east-1')}} -u{{ lookup('amazon.aws.aws_ssm','{{component}}.{{env}}.mysqluname', region = 'us-east-1')}} -p{{ lookup('amazon.aws.aws_ssm','{{component}}.{{env}}.mysqlpassword', region = 'us-east-1')}} < /app/schema/shipping.sql
-  when: schema is defined and schema_check.rc ! = 0
+  when: schema is defined and schema_check.rc != 0
 
 - name: reStart shipping service
   ansible.builtin.service:
