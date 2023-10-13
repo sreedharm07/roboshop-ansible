@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{.value.component}}
+  labels:
+    app.kubernetes.io/name: {{.value.component}}
+spec:
+  containers:
+    - name: {{.value.component}}
+      image: rkalluru/{{.value.component}}
